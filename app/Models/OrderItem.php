@@ -2,21 +2,25 @@
 
 namespace App\Models;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class OrderItem extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function products()
+    public function order()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Order::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }
-
-
-
